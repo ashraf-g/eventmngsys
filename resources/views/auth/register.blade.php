@@ -33,16 +33,6 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-
-                            {{-- <div class="mb-3">
-                                <label for="phoneno" class="form-label">Mobile Number</label>
-                                <input type="tel" class="form-control" id="phoneno" name="phoneno"
-                                    value="{{ old('phoneno') }}" pattern="[0-9]{10}" required />
-                                @error('phoneno')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div> --}}
-
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required />

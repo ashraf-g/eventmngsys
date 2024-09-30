@@ -15,24 +15,11 @@ class Customer extends Model
 
     // Specify the fillable fields
     protected $fillable = [
-        'customerid',
-        'username',
-        'password',
-        'email',
+        'user_id',       
         'phoneno',
         'otp',
     ];
 
-    // Mutator to hash the password before saving
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
-
-    // Define a relationship to the User model if needed
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'customerid');
-    }
+   
 }
 

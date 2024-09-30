@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id('customer_id'); // Creates the 'id' field which is auto-incrementing
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('email')->unique();
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->string('phoneno')->nullable();
             $table->string('otp')->nullable();
             $table->timestamps();
@@ -28,11 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('customers', function (Blueprint $table) {
-            // Drop the foreign key constraint first
-            $table->dropForeign(['id']);
-        });
-
         Schema::dropIfExists('customers');
     }
 };

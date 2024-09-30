@@ -15,17 +15,11 @@ class Admin extends Model
 
     // Specify the fillable fields for mass assignment
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'user_id',
         'otp',
     ];
 
-    // Hash the password when setting it
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+   
 
     // Optional: You might add methods for authentication or relationships here
 }

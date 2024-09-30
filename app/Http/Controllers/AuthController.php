@@ -46,11 +46,9 @@ class AuthController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:customers'],
-            // 'phoneno' => ['required', 'string', 'regex:/^\d{10}$/'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ], [
             'email.unique' => 'The email has already been taken.',
-            // 'phoneno.regex' => 'The phone number must be exactly 10 digits.',
         ]);
 
         try {
@@ -58,7 +56,6 @@ class AuthController extends Controller
             $customer = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                // 'phoneno' => $request->phoneno,
                 'password' => Hash::make($request->password),
                 'role'=>'user'
             ]);

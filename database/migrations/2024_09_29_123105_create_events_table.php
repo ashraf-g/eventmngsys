@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id('event_id'); // Event ID
-            $table->unsignedBigInteger('vendor_id'); // Vendor ID
-            $table->foreign('vendor_id')->references('vendor_id')->on('vendors');
+            $table->unsignedBigInteger('user_id'); // Vendor ID
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->string('event_name'); // Event Name
             $table->text('description')->nullable(); // Description
             $table->integer('capacity'); // Capacity

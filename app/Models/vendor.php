@@ -15,25 +15,12 @@ class Vendor extends Model
 
     // Specify the fillable fields for mass assignment
     protected $fillable = [
-        'vendorid',
-        'name',
-        'email',
-        'phno',
-        'password',
+        'user_id',
         'shop_name',
         'address',
         'otp',
     ];
 
-    // Hash the password when setting it
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
 
-    // Define any relationships if needed
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'vendorid');
-    }
+   
 }

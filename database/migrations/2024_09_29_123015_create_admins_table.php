@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id('admin_id'); // Creates the 'id' field which is auto-incrementing
-            $table->string('name'); // Admin's name
-            $table->string('email')->unique(); // Admin's email, should be unique
-            $table->string('password'); // Password, should be hashed
+            $table->id(); // Creates the 'id' field which is auto-incrementing
+           $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->string('otp')->nullable(); // OTP can be nullable
             $table->timestamps(); // Creates 'created_at' and 'updated_at' timestamps
         });

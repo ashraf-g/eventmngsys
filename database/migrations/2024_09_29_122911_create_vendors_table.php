@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vendors', function (Blueprint $table) {
-            $table->id('vendor_id');
-            $table->string('name'); // Vendor's name
-            $table->string('email')->unique(); // Vendor's email, should be unique
-            $table->string('phno')->nullable(); // Phone number, can be nullable
-            $table->string('password')->nullable(); // Password
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->string('shop_name'); // Name of the shop
             $table->text('address'); // Address of the shop
             $table->string('otp')->nullable(); // OTP can be nullable
@@ -30,11 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('vendors', function (Blueprint $table) {
-            // Drop the foreign key constraint first
-            $table->dropForeign(['id']);
-        });
-
         Schema::dropIfExists('vendors');
     }
 };
